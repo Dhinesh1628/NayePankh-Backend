@@ -36,7 +36,14 @@ app.use(
         'http://localhost:5175'
       ].filter(Boolean);
 
-      if (allowedOrigins.includes(origin) || /^http:\/\/localhost:\d+$/.test(origin)) {
+      const isAllowed = 
+        allowedOrigins.includes(origin) || 
+        /^https?:\/\/localhost(:\d+)?$/.test(origin) ||
+        /\.pinggy-free\.link$/.test(origin) ||
+        /\.pinggy\.link$/.test(origin) ||
+        /\.ngrok-free\.app$/.test(origin);
+
+      if (isAllowed) {
         callback(null, true);
       } else {
         callback(new Error('Not allowed by CORS'));
