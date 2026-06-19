@@ -41,7 +41,8 @@ app.use(
         /^https?:\/\/localhost(:\d+)?$/.test(origin) ||
         /\.pinggy-free\.link$/.test(origin) ||
         /\.pinggy\.link$/.test(origin) ||
-        /\.ngrok-free\.app$/.test(origin);
+        /\.ngrok-free\.app$/.test(origin) ||
+        /\.vercel\.app$/.test(origin);
 
       if (isAllowed) {
         callback(null, true);
